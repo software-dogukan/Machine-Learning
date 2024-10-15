@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import tain_test_split
 from sklearn import preprocessing
 from sklearn.linear_model import LinearRegression
@@ -31,3 +32,10 @@ data=pd.concat([left,right],axis=1)
 x_train,x_test,y_train,y_test=tain_test_split(data,weight,test_size=0.33,random_state=0)
 regressor2.fit(x_train,y_train)
 y_pred=regressor2.predict(x_test)
+#hangi p value değeri yüksek onu bulmamızı ve o değerleri o sütunu çıkarmamıza yaradı
+import stadtsmodels.api as sm
+X=np.append(arr=np.ones((22,1)).astype(int),values=data,axis=1)
+X_ls=data.iloc[:,[0,1,2,3,4,5,]].values
+X_ls=np.array(X_ls,dtype=float)
+model=sm.OLS(weight,X_ls).fit()
+print(model.summary())

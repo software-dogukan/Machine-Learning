@@ -11,4 +11,3 @@ x_scaler=sc1.fit_transform(x)
 y_scaler=sc2.fit_transform(y)
 r_dt.fit(x_scaler,y_scaler)
 print(r_dt.predict(11))
-.
